@@ -21,8 +21,16 @@
             <div style="color:red">{{ $message }}</div>
         @enderror
 
-        <label for="genre">Gênero:</label>
-        <input type="text" name="genre" id="genre" value="{{ old('genre') }}" > <br>
+        <label for="genre_id">Gênero:</label>
+        <select name="genre_id">
+            @if( $genres->count() )
+                @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @endforeach
+            @else
+                <option>Não há gêneros de filmes cadastrados!</option>
+            @endif
+        </select> <br>
         @error('genre')
             <div style="color:red">{{ $message }}</div>
         @enderror

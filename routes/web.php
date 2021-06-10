@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MovieCtr;
+use App\Http\Controllers\GenreCtr;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,9 @@ Route::get('/', function () {
 });
 
 Route::resource('/movie', MovieCtr::class);
+
+Route::resource('/genre', GenreCtr::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

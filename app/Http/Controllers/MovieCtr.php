@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class MovieCtr extends Controller
@@ -15,8 +16,9 @@ class MovieCtr extends Controller
     public function index()
     {
         $movies = Movie::all();
+        $genres = Genre::all();
 
-        return view('movie.index')->with('movies', $movies);
+        return view('movie.index')->with('movies', $movies)->with('genres', $genres);
     }
 
     /**
@@ -26,7 +28,9 @@ class MovieCtr extends Controller
      */
     public function create()
     {
-        return view('movie.create');
+        $genres = Genre::all();
+
+        return view('movie.create')->with('genres', $genres);
     }
 
     /**
@@ -58,7 +62,7 @@ class MovieCtr extends Controller
         $movie = Movie::find($id);
 
         if($movie){
-            return view('movie.show')->with('movie', $movie);
+            return view('movie.show')->with('movie', $movie)->with('genre', Genre::find($movie->id));
         } else {
             abort(404);
         }
@@ -73,9 +77,11 @@ class MovieCtr extends Controller
     public function edit($id)
     {
         $movie = Movie::find($id);
-
+        $genres = Genre::all();
+        $genre_name = Genre::find($movie->genre_id);
+        
         if($movie){
-            return view('movie.edit')->with('movie', $movie);
+            return view('movie.edit')->with('movie', $movie)->with('genres', $genres)->with('genre_name', $genre_name);
         } else {
             abort(404);
         }
@@ -90,7 +96,7 @@ class MovieCtr extends Controller
      */
     public function update(Request $request, $id)
     {
-        $movie = new Movie();
+        $movie = Movie::find($id);
         $movie->name = $request->input('name');
         $movie->rating = $request->input('rating');
         $movie->duration = $request->input('duration');

@@ -10,14 +10,21 @@
     <div id="container">
         <header>
             <h1>FLIXTRON</h1>
-            <hr/>
-            <h2>Cadastrar Filmes</h2>
         </header>
+        <hr/>
         <nav>
+            <h2>Cadastrar Filmes</h2>
             <ol>
                 <li> <a href=" {{ route('movie.index') }} ">Início</a></li>
                 <li> <a href=" {{ route('movie.create') }} ">Novo</a> </li>
             </ol>
+
+            <form method="post" action="{{ route('genre.store') }}">
+                @csrf
+                <input type='text' name='name' id='name'>
+                <input type='submit' name='command' value='Cadastrar novo gênero'>
+            </form> 
+            <br>
         </nav>
         <div class="content">
             @yield('content') 

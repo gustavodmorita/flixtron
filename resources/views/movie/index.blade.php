@@ -11,8 +11,13 @@
                 <tr>
                     <td>{{ $movie->id }}</td>
                     <td>{{ $movie->name }}</td>
-                    <td>{{ $movie->category }}</td>
-                    <td>{{ $movie->value }}</td>
+                    <td>{{ $movie->rating }}</td>
+                    <td>{{ $movie->duration }}</td>
+                    @foreach ($genres as $genre)
+                        @if( $genre->id == $movie->genre_id )
+                            <td>{{ $genre->name }}</td>
+                        @endif
+                    @endforeach
                     <td><button> <a href="{{ route('movie.show', $movie->id) }}">Mostrar</a> </button></td>
                     <td><button> <a href="{{ route('movie.edit', $movie->id) }}">Editar</a> </button></td>
                     <td>

@@ -7,7 +7,7 @@
     <p>Nome: {{ $movie->name }}</p>
     <p>Classificação: {{ $movie->rating }}</p>
     <p>Duração: {{ $movie->duration }}</p>
-    <p>Gênero: {{ $movie->genre }}</p>
+    <p>Gênero: {{ $genre->name }}</p>
 
 @endsection
 

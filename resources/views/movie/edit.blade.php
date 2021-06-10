@@ -13,8 +13,16 @@
         <label for="duration">Duração:</label>
         <input value="{{ $movie->duration }}" type="text" name="duration" id="duration" required> <br>
 
-        <label for="genre">Gênero:</label>
-        <input value="{{ $movie->genre }}" type="text" name="genre" id="genre" required> <br>
+        <label for="genre_id">Gênero:</label>
+        <select name="genre_id">
+            @foreach ($genres as $genre)
+                @if($genre_name->name == $genre->name)
+                    <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
+                @else
+                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                @endif
+            @endforeach
+        </select> <br>
 
         <input type="submit" name="command" value="Salvar">
     </form>
