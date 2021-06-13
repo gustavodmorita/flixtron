@@ -62,7 +62,7 @@ class MovieCtr extends Controller
         $movie = Movie::find($id);
 
         if($movie){
-            return view('movie.show')->with('movie', $movie)->with('genre', Genre::find($movie->id));
+            return view('movie.show')->with('movie', $movie)->with('genre', Genre::find($movie->genre_id));
         } else {
             abort(404);
         }
