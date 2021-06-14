@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('movie.index');
 });
 
-Route::resource('/movie', MovieCtr::class);
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('/movie', MovieCtr::class);
+    Route::resource('/genre', GenreCtr::class);
+});
 
-Route::resource('/genre', GenreCtr::class);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
