@@ -11,18 +11,27 @@
         @method('PUT')
         <div class="form-group">
             <label for="name">Nome do Filme</label>
-            <input type="text" class="form-control" name="name" id="name" value="{{ $movie->name }}" placeholder="Vingadores Ultimato...">
+            <input type="text" class="form-control" name="name" id="name" value="{{ $movie->name }}">
+            @error('name')
+                <div style="color:red">{{ $message }}</div>
+            @enderror
             
         </div>
         <div class="form-row mb-2">
           <div class="form-group col-md-6">
             <label for="rating">Classificação</label>
-            <input type="text" class="form-control" name="rating" id="rating" value="{{ $movie->rating }}" placeholder="Maiores de 18 anos...">
+            <input type="text" class="form-control" name="rating" id="rating" value="{{ $movie->rating }}">
+            @error('rating')
+                <div style="color:red">{{ $message }}</div>
+            @enderror
             
           </div>
           <div class="form-group col-md-6">
             <label for="duration">Duração</label>
-            <input type="text" class="form-control" name="duration" id="duration" value="{{ $movie->duration }}" placeholder="1 hora e 30 minutos...">
+            <input type="text" class="form-control" name="duration" id="duration" value="{{ $movie->duration }}">
+            @error('duration')
+                <div style="color:red">{{ $message }}</div>
+            @enderror
             
           </div>
           <div class="form-group col-md-4">

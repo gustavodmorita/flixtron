@@ -41,6 +41,19 @@ class MovieCtr extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'name' => 'string|required|max:100',
+                'rating' => 'required|max:50',
+                'duration' => 'required|max:50'
+            ], 
+            [
+                'name.*' => 'O nome do filme é necessário e deve ter até 100 caracteres',
+                'rating.*' => 'A classificação do filme é necessária',
+                'duration.*' => 'A duração do filme é necessária',
+            ]
+        );
+
         $movie = new Movie();
         $movie->name = $request->input('name');
         $movie->rating = $request->input('rating');
@@ -96,6 +109,19 @@ class MovieCtr extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'name' => 'string|required|max:100',
+                'rating' => 'required|max:50',
+                'duration' => 'required|max:50'
+            ], 
+            [
+                'name.*' => 'O nome do filme é necessário e deve ter até 100 caracteres',
+                'rating.*' => 'A classificação do filme é necessária',
+                'duration.*' => 'A duração do filme é necessária',
+            ]
+        );
+
         $movie = Movie::find($id);
         $movie->name = $request->input('name');
         $movie->rating = $request->input('rating');

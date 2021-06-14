@@ -38,12 +38,9 @@
                         <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                     @endforeach
                 @else
-                    <option>Não há gêneros de filmes cadastrados!</option>
+                    <option style="color:red">Não há gêneros de filmes cadastrados!</option>
                 @endif
             </select>
-            @error('genre')
-                <div style="color:red">{{ $message }}</div>
-            @enderror
           </div>
         </div>
         <button type="submit" class="btn btn-success" name="command">Salvar</button>

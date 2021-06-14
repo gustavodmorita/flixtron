@@ -75,7 +75,7 @@
             <form class="row ms-auto mt-1" method="post" action="{{ route('genre.store') }}">
                 @csrf
                 <div class="col">
-                    <input class="form-control mr-sm-2" type='text' name='name' id='name' placeholder="Novo gênero de filme">
+                    <input class="form-control mr-sm-2" type='text' name='name' id='name' placeholder="Novo gênero de filme" required>
                 </div>
                 <div class="col-auto">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  name="command">Adicionar Gênero</button>
